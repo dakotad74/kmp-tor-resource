@@ -50,7 +50,7 @@ open class NoExecTorResourceValidationExtension private constructor(
     private val jvmLinuxLibcPpc64: String = "e15351018b9ff85c12e14f40e974f542157c7e33c4634cbc808814d36951d4e5"
     private val jvmLinuxLibcRiscv64: String = "f2e06d9463bc74d289d2f68c0598226f72e96946b560671adadb905cd5cb5418"
     private val jvmLinuxLibcX86: String = "63d28c9eac8cb180729d6a95e51d13516583a860444e53a2ad82d446c7074874"
-    private val jvmLinuxLibcX86_64: String = "81c495605fe1921380c38e5ab1ff272c6b4dbe9f96c1d86335b71d0366bfbca1"
+    private val jvmLinuxLibcX86_64: String = "a572ebfea616882214a1219fabef4d0a353fd6c4b18137230153184abc30b277"
 
     private val jvmLinuxMuslAarch64: String = "ab969dfde1579ee3c1afdaf6139eb8f4bb3d929c77f22f3958a3eacac1df78f1"
     private val jvmLinuxMuslX86: String = "ce6631cb358524e136452e4e1cd5169f1fe656f8a8e27f821440ee931b47153d"
@@ -83,138 +83,19 @@ open class NoExecTorResourceValidationExtension private constructor(
     fun errorReportJvmNativeLibResources(): String = errorReportJvmNativeLibsProtected()
 
     final override val hashes: Set<ValidationHash> by lazy { setOf(
-        // android
-        ValidationHash.LibAndroid(
-            libname = "libtorjni.so",
-            hashArm64 = androidAarch64,
-            hashArmv7 = androidArmv7,
-            hashX86 = androidX86,
-            hashX86_64 = androidX86_64,
-        ),
-
-        // jvm linux-android
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "aarch64",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxAndroidAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "armv7",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxAndroidArmv7,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "x86",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxAndroidX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "x86_64",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxAndroidX86_64,
-        ),
+        // LOCAL BUILD (409.15.0-local): validation narrowed to linux-libc x86_64,
+        // the only target compiled and packaged on this machine (tor 0.4.9.15).
+        // All other platform entries (incl. android jniLibs) are intentionally
+        // omitted until those targets are built and packaged (see task.sh
+        // validate:all:update_hashes for the upstream flow that restores them).
 
         // jvm linux-libc
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "aarch64",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxLibcAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "armv7",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxLibcArmv7,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "ppc64",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxLibcPpc64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "riscv64",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxLibcRiscv64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "x86",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxLibcX86,
-        ),
         ValidationHash.LibJvm(
             osName = "linux",
             osSubtype = "libc",
             arch = "x86_64",
             libName = "libtorjni.so.gz",
             hash = jvmLinuxLibcX86_64,
-        ),
-
-        // jvm linux-musl
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "aarch64",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxMuslAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "x86",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxMuslX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "x86_64",
-            libName = "libtorjni.so.gz",
-            hash = jvmLinuxMuslX86_64,
-        ),
-
-        // jvm macos
-        ValidationHash.LibJvm(
-            osName = "macos",
-            arch = "aarch64",
-            libName = "libtorjni.dylib.gz",
-            hash = jvmMacosAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "macos",
-            arch = "x86_64",
-            libName = "libtorjni.dylib.gz",
-            hash = jvmMacosX86_64,
-        ),
-
-        // jvm mingw
-        ValidationHash.LibJvm(
-            osName = "mingw",
-            arch = "x86",
-            libName = "torjni.dll.gz",
-            hash = jvmMingwX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "mingw",
-            arch = "x86_64",
-            libName = "torjni.dll.gz",
-            hash = jvmMingwX86_64,
         ),
     ) }
 

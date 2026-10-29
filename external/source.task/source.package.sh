@@ -189,11 +189,18 @@ function __package:file {
   if [ "$gzip" = "yes" ]; then
     sleep 1
 
-    # Must utilize docker gzip for reproducible results
-    __docker:run "--silent" \
-      "$DIR_STAGING" \
-      "05nelsonm/build-env.base" \
-      gzip --no-name --best --verbose "/work/$3"
+    if [ -n "$DOCKER" ]; then
+      # Must utilize docker gzip for reproducible results
+      __docker:run "--silent" \
+        "$DIR_STAGING" \
+        "05nelsonm/build-env.base" \
+        gzip --no-name --best --verbose "/work/$3"
+    else
+      # Docker is unavailable (e.g. local builds without a docker daemon).
+      # Fallback to the host gzip with the exact same arguments the
+      # dockerized invocation uses. NOT reproducible with official releases.
+      gzip --no-name --best --verbose "$DIR_STAGING/$3"
+    fi
 
     file_ext=".gz"
   fi

@@ -35,7 +35,7 @@ Tor and its dependencies are compiled from source using the following versions
 |----------|-------------------------|
 | libevent | `release-2.1.12-stable` |
 | openssl  | `openssl-3.5.5`         |
-| tor      | `tor-0.4.9.5`           |
+| tor      | `tor-0.4.9.15`          |
 | xz       | `v5.8.2`                |
 | zlib     | `v1.3.1`                |
 
@@ -126,7 +126,7 @@ have a `GPL` license are able to take advantage of the new functionality, and pr
 ```kotlin
 // build.gradle.kts
 dependencies {
-    val vKmpTorResource = "409.5.0"
+    val vKmpTorResource = "409.15.0-local"
     implementation("io.matthewnelson.kmp-tor:resource-exec-tor:$vKmpTorResource")
     implementation("io.matthewnelson.kmp-tor:resource-noexec-tor:$vKmpTorResource")
 

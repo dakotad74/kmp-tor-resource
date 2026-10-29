@@ -52,7 +52,7 @@ open class ExecTorResourceValidationExtension private constructor(
     private val jvmLinuxLibcPpc64: String = "04d1d5d14a8a0a7a2f56d5b6d587faa20f4a40ef203bcb2557960f6f757acb50"
     private val jvmLinuxLibcRiscv64: String = "a79912aeda2d09c31af8c03f796bba2ec85d4264b2ef1b18de2751a1f57c533d"
     private val jvmLinuxLibcX86: String = "7dbf5f18dc25a84dae0816af7de47685de8e4243d9a39cf6a5ba845c2695f469"
-    private val jvmLinuxLibcX86_64: String = "eb6ac226e3e542b5ad039252ebbfd363ba7b5993e03179ccf78a8f1c0b113ea8"
+    private val jvmLinuxLibcX86_64: String = "cdd2c6cccf58e63463747048ad7cf7c04c8233d63209ff7d2e2140c364d78759"
 
     private val jvmLinuxMuslAarch64: String = "1ada319c711e3d74fc48aac36d3dffb080fbb8d8daebdd9ab8822ca3f60e14f5"
     private val jvmLinuxMuslX86: String = "33ae5f06bebac301bb78ef0507a54ea46f5897cc746f29a4b574ea36eae3bfbd"
@@ -101,72 +101,13 @@ open class ExecTorResourceValidationExtension private constructor(
     fun errorReportNativeResource(sourceSet: String): String = errorReportNativeResourceProtected(sourceSet)
 
     final override val hashes: Set<ValidationHash> by lazy { setOf(
-        // jvm linux-android
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "aarch64",
-            libName = "tor.gz",
-            hash = jvmLinuxAndroidAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "armv7",
-            libName = "tor.gz",
-            hash = jvmLinuxAndroidArmv7,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "x86",
-            libName = "tor.gz",
-            hash = jvmLinuxAndroidX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "x86_64",
-            libName = "tor.gz",
-            hash = jvmLinuxAndroidX86_64,
-        ),
+        // LOCAL BUILD (409.15.0-local): validation narrowed to linux-libc x86_64,
+        // the only target compiled and packaged on this machine (tor 0.4.9.15).
+        // All other platform entries are intentionally omitted until those
+        // targets are built and packaged (see task.sh validate:all:update_hashes
+        // for the upstream flow that restores them).
 
         // jvm linux-libc
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "aarch64",
-            libName = "tor.gz",
-            hash = jvmLinuxLibcAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "armv7",
-            libName = "tor.gz",
-            hash = jvmLinuxLibcArmv7,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "ppc64",
-            libName = "tor.gz",
-            hash = jvmLinuxLibcPpc64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "riscv64",
-            libName = "tor.gz",
-            hash = jvmLinuxLibcRiscv64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "x86",
-            libName = "tor.gz",
-            hash = jvmLinuxLibcX86,
-        ),
         ValidationHash.LibJvm(
             osName = "linux",
             osSubtype = "libc",
@@ -175,86 +116,11 @@ open class ExecTorResourceValidationExtension private constructor(
             hash = jvmLinuxLibcX86_64,
         ),
 
-        // jvm linux-musl
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "aarch64",
-            libName = "tor.gz",
-            hash = jvmLinuxMuslAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "x86",
-            libName = "tor.gz",
-            hash = jvmLinuxMuslX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "x86_64",
-            libName = "tor.gz",
-            hash = jvmLinuxMuslX86_64,
-        ),
-
-        // jvm macos
-        ValidationHash.LibJvm(
-            osName = "macos",
-            arch = "aarch64",
-            libName = "tor.gz",
-            hash = jvmMacosAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "macos",
-            arch = "x86_64",
-            libName = "tor.gz",
-            hash = jvmMacosX86_64,
-        ),
-
-        // jvm mingw
-        ValidationHash.LibJvm(
-            osName = "mingw",
-            arch = "x86",
-            libName = "tor.exe.gz",
-            hash = jvmMingwX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "mingw",
-            arch = "x86_64",
-            libName = "tor.exe.gz",
-            hash = jvmMingwX86_64,
-        ),
-
         // native linux
-        ValidationHash.ResourceNative(
-            sourceSetName = "linuxArm64".toSourceSetName(),
-            ktFileName = "resource_tor_gz.kt",
-            hash = nativeLinuxArm64,
-        ),
         ValidationHash.ResourceNative(
             sourceSetName = "linuxX64".toSourceSetName(),
             ktFileName = "resource_tor_gz.kt",
             hash = nativeLinuxX64,
-        ),
-
-        // native macos
-        ValidationHash.ResourceNative(
-            sourceSetName = "macosArm64".toSourceSetName(),
-            ktFileName = "resource_tor_gz.kt",
-            hash = nativeMacosArm64,
-        ),
-        ValidationHash.ResourceNative(
-            sourceSetName = "macosX64".toSourceSetName(),
-            ktFileName = "resource_tor_gz.kt",
-            hash = nativeMacosX64,
-        ),
-
-        // native mingw
-        ValidationHash.ResourceNative(
-            sourceSetName = "mingwX64".toSourceSetName(),
-            ktFileName = "resource_tor_exe_gz.kt",
-            hash = nativeMingwX64,
         ),
     ) }
 

@@ -20,7 +20,7 @@
 #       may need to be updated with new min version.
 readonly TAG_DOCKER_BUILD_ENV="0.4.1"
 
-readonly DOCKER="$(which docker)"
+readonly DOCKER="$(which docker || true)"
 readonly U_ID="$(id -u)"
 readonly G_ID="$(id -g)"
 

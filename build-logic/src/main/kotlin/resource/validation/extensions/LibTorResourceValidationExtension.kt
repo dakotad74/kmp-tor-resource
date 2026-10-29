@@ -52,7 +52,7 @@ open class LibTorResourceValidationExtension private constructor(
     protected open val jvmLinuxLibcPpc64: String = "704899efe756a8fdfc002361d15ab5b1084ad3b7703c528ef86023c0f319fa88"
     protected open val jvmLinuxLibcRiscv64: String = "d1063c7be325744e90b5479df6e14b6b342390f140696e207250182ec290c3d5"
     protected open val jvmLinuxLibcX86: String = "d39eec6cc9153a0c3413f80117de7d9d1140211bd78c3e444563026c4f94e992"
-    protected open val jvmLinuxLibcX86_64: String = "ed26564b85252a31a2d93a2f7e2e7c3ec5e30abca94fa0b951a1db38605b5880"
+    protected open val jvmLinuxLibcX86_64: String = "2ad8b6da7c0c6cb84e58fa28f2d654dce5a324c805896720f7d7444ed02eac8e"
 
     protected open val jvmLinuxMuslAarch64: String = "7f317b91bc12c05aa78897329a3fe815e9ba70e04e0b9803e5feb6dbe38a4bbb"
     protected open val jvmLinuxMuslX86: String = "5a7667e5f9dc4392004c0df0d5f3556426a210dc1f102c7be873e6097a532dc0"
@@ -93,7 +93,7 @@ open class LibTorResourceValidationExtension private constructor(
         override val jvmLinuxLibcPpc64: String = "9d520c0dad93175e82d423ee019991a0c85c68eeb6f8969628f45bb041dcaa69"
         override val jvmLinuxLibcRiscv64: String = "a0e285208cda350fe2406913bac25d68556625bf01f0a034f1a0c002d4a2552c"
         override val jvmLinuxLibcX86: String = "f2c99e975f2aefe7894b0f9f34d14560232981474205aa4ac7f52c90792c0308"
-        override val jvmLinuxLibcX86_64: String = "caff05dfc12a9d4ab0adf12f389978656a0c026120be34114479aa502d74eada"
+        override val jvmLinuxLibcX86_64: String = "d4833cfef328e01ea2536f51aab7371aba65b52dc07e423fa6535009737c2846"
 
         override val jvmLinuxMuslAarch64: String = "a41bf6081de89460f3b20a437926c69e995b5799bdf3816ed09a44e8e15d2579"
         override val jvmLinuxMuslX86: String = "5dbce56c2227bf52cbda1ba2cba991252e42cbb8ecbd817ac06790b245c86cbf"
@@ -123,72 +123,13 @@ open class LibTorResourceValidationExtension private constructor(
     fun errorReportNativeResource(sourceSet: String): String = errorReportNativeResourceProtected(sourceSet)
 
     final override val hashes: Set<ValidationHash> by lazy { setOf(
-        // jvm linux-android
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "aarch64",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxAndroidAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "armv7",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxAndroidArmv7,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "x86",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxAndroidX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "android",
-            arch = "x86_64",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxAndroidX86_64,
-        ),
+        // LOCAL BUILD (409.15.0-local): validation narrowed to linux-libc x86_64,
+        // the only target compiled and packaged on this machine (tor 0.4.9.15).
+        // All other platform entries are intentionally omitted until those
+        // targets are built and packaged (see task.sh validate:all:update_hashes
+        // for the upstream flow that restores them).
 
         // jvm linux-libc
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "aarch64",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxLibcAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "armv7",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxLibcArmv7,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "ppc64",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxLibcPpc64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "riscv64",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxLibcRiscv64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "libc",
-            arch = "x86",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxLibcX86,
-        ),
         ValidationHash.LibJvm(
             osName = "linux",
             osSubtype = "libc",
@@ -197,98 +138,11 @@ open class LibTorResourceValidationExtension private constructor(
             hash = jvmLinuxLibcX86_64,
         ),
 
-        // jvm linux-musl
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "aarch64",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxMuslAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "x86",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxMuslX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "linux",
-            osSubtype = "musl",
-            arch = "x86_64",
-            libName = "libtor.so.gz",
-            hash = jvmLinuxMuslX86_64,
-        ),
-
-        // jvm macos
-        ValidationHash.LibJvm(
-            osName = "macos",
-            arch = "aarch64",
-            libName = "libtor.dylib.gz",
-            hash = jvmMacosAarch64,
-        ),
-        ValidationHash.LibJvm(
-            osName = "macos",
-            arch = "x86_64",
-            libName = "libtor.dylib.gz",
-            hash = jvmMacosX86_64,
-        ),
-
-        // jvm mingw
-        ValidationHash.LibJvm(
-            osName = "mingw",
-            arch = "x86",
-            libName = "tor.dll.gz",
-            hash = jvmMingwX86,
-        ),
-        ValidationHash.LibJvm(
-            osName = "mingw",
-            arch = "x86_64",
-            libName = "tor.dll.gz",
-            hash = jvmMingwX86_64,
-        ),
-
         // native linux
-        ValidationHash.ResourceNative(
-            sourceSetName = "linuxArm64".toSourceSetName(),
-            ktFileName = "resource_libtor_so_gz.kt",
-            hash = nativeLinuxArm64,
-        ),
         ValidationHash.ResourceNative(
             sourceSetName = "linuxX64".toSourceSetName(),
             ktFileName = "resource_libtor_so_gz.kt",
             hash = nativeLinuxX64,
-        ),
-
-        // native ios-simulator
-        ValidationHash.ResourceNative(
-            sourceSetName = "iosSimulatorArm64".toSourceSetName(),
-            ktFileName = "resource_libtor_dylib_gz.kt",
-            hash = nativeIosSimulatorArm64,
-        ),
-        ValidationHash.ResourceNative(
-            sourceSetName = "iosX64".toSourceSetName(),
-            ktFileName = "resource_libtor_dylib_gz.kt",
-            hash = nativeIosX64,
-        ),
-
-        // native macos
-        ValidationHash.ResourceNative(
-            sourceSetName = "macosArm64".toSourceSetName(),
-            ktFileName = "resource_libtor_dylib_gz.kt",
-            hash = nativeMacosArm64,
-        ),
-        ValidationHash.ResourceNative(
-            sourceSetName = "macosX64".toSourceSetName(),
-            ktFileName = "resource_libtor_dylib_gz.kt",
-            hash = nativeMacosX64,
-        ),
-
-        // native mingw
-        ValidationHash.ResourceNative(
-            sourceSetName = "mingwX64".toSourceSetName(),
-            ktFileName = "resource_tor_dll_gz.kt",
-            hash = nativeMingwX64,
         ),
     ) }
 
