@@ -1,0 +1,101 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "url": "../../resource-exec-tor/409.15.0-local/resource-exec-tor-409.15.0-local.module",
+    "group": "io.matthewnelson.kmp-tor",
+    "module": "resource-exec-tor",
+    "version": "409.15.0-local",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.14.3"
+    }
+  },
+  "variants": [
+    {
+      "name": "linuxX64ApiElements-published",
+      "attributes": {
+        "artifactType": "org.jetbrains.kotlin.klib",
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-api",
+        "org.jetbrains.kotlin.native.target": "linux_x64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "dependencies": [
+        {
+          "group": "io.matthewnelson.kmp-tor",
+          "module": "common-api",
+          "version": {
+            "requires": "2.4.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.21"
+          }
+        },
+        {
+          "group": "io.matthewnelson.kmp-tor",
+          "module": "resource-lib-tor",
+          "version": {
+            "requires": "409.15.0-local"
+          }
+        },
+        {
+          "group": "io.matthewnelson.kmp-tor",
+          "module": "common-core",
+          "version": {
+            "requires": "2.4.2"
+          }
+        },
+        {
+          "group": "io.matthewnelson.kmp-tor",
+          "module": "resource-geoip",
+          "version": {
+            "requires": "409.15.0-local"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "resource-exec-tor-linuxX64Main-409.15.0-local.klib",
+          "url": "resource-exec-tor-linuxx64-409.15.0-local.klib",
+          "size": 24883,
+          "sha512": "d8d0548cea2cd360ccb458027314cec6786447768850b5626a89f132ad02e7eda18360ff4bf7c422f450db24e162d9fb4d810a35aa17cfcea17b3b0bb9e6f381",
+          "sha256": "4d8ff0a258a65cc29b2b8bfbb37c4fb3deede0289e309927166a1a1c01c3db92",
+          "sha1": "7f4f51d58d46d8d969ae6ce35bac43baa6f84c32",
+          "md5": "5b151ddb9cfe2b4022d53fe2d4ae7497"
+        }
+      ]
+    },
+    {
+      "name": "linuxX64SourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-runtime",
+        "org.jetbrains.kotlin.native.target": "linux_x64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "files": [
+        {
+          "name": "resource-exec-tor-linuxx64-409.15.0-local-sources.jar",
+          "url": "resource-exec-tor-linuxx64-409.15.0-local-sources.jar",
+          "size": 15035,
+          "sha512": "6de8942af9405386e989d8367823e7b88a7350abcf91f6a473b26e33a0ce7c44f57d45d2d4b7b5790db4d1752f51b9e4927b7bcfa65ec46f7278d71d0152668d",
+          "sha256": "33cc63fde1354ee541c7efdc43ca599f593943ed9c787b377bd6bb3bdc08a6ef",
+          "sha1": "f132cce4d5ab701934fc7c8cd6d4e9c7553e6758",
+          "md5": "781d90a4bfbeb0e689a7b6bff8345315"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "url": "../../resource-geoip/409.15.0-local/resource-geoip-409.15.0-local.module",
+    "group": "io.matthewnelson.kmp-tor",
+    "module": "resource-geoip",
+    "version": "409.15.0-local",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.14.3"
+    }
+  },
+  "variants": [
+    {
+      "name": "linuxX64ApiElements-published",
+      "attributes": {
+        "artifactType": "org.jetbrains.kotlin.klib",
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-api",
+        "org.jetbrains.kotlin.native.target": "linux_x64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.2.21"
+          }
+        },
+        {
+          "group": "io.matthewnelson.kmp-tor",
+          "module": "common-core",
+          "version": {
+            "requires": "2.4.2"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "resource-geoip-linuxX64Main-409.15.0-local.klib",
+          "url": "resource-geoip-linuxx64-409.15.0-local.klib",
+          "size": 9633675,
+          "sha512": "adc178fa822a2346f7f675bf6eb21f36f09b4b5ecf0e3de459071880d696c9069a1c257749d056e236a2bcb96aca5e45edeccc83b4340b43178cd68089d2997e",
+          "sha256": "02b3b692c68635342637a26b0b9154bae9d625d3cb040c86378fe664978c75d2",
+          "sha1": "7b23c3579dd6df897a7b9c6552b5e3e23c2b4057",
+          "md5": "491d903612428cbd82603fec766cbb6a"
+        }
+      ]
+    },
+    {
+      "name": "linuxX64SourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "non-jvm",
+        "org.gradle.usage": "kotlin-runtime",
+        "org.jetbrains.kotlin.native.target": "linux_x64",
+        "org.jetbrains.kotlin.platform.type": "native"
+      },
+      "files": [
+        {
+          "name": "resource-geoip-linuxx64-409.15.0-local-sources.jar",
+          "url": "resource-geoip-linuxx64-409.15.0-local-sources.jar",
+          "size": 4617035,
+          "sha512": "ae47f156f9e37e395777ac78ea2cd658245f0a9c4ab85789ae032dab3f198976ee48f8b8831cdb684f481775ea0d854a828e89ed5e818e1ba63b832ccbf7b605",
+          "sha256": "8f484814bd3e423af401bb81fd9b8c0de483a75ae5127c761f49ef6bc32431f0",
+          "sha1": "358479dde3f1bea4f0672537f5fa20d8ad3a9827",
+          "md5": "cfafbcfc0f1b339e6ab89057b874c67d"
+        }
+      ]
+    }
+  ]
+}

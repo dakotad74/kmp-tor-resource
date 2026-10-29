@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>io.matthewnelson.kmp-tor</groupId>
+  <artifactId>resource-lib-tor</artifactId>
+  <versioning>
+    <latest>409.15.0-local</latest>
+    <release>409.15.0-local</release>
+    <versions>
+      <version>409.15.0-local</version>
+    </versions>
+    <lastUpdated>20261029022442</lastUpdated>
+  </versioning>
+</metadata>
